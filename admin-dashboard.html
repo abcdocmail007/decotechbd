@@ -325,23 +325,64 @@
         }
 
         // --- 4. Save Product Function ---
-        async function saveProduct() {
-            const btn = document.getElementById('saveBtn');
-            btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Saving...';
-            btn.disabled = true;
+       async function saveProduct() {
+    const btn = document.getElementById('saveBtn');
+    
+    // ১. ফর্ম থেকে ডাটা নেওয়া
+    const pName = document.getElementById('pName').value;
+    const pPrice = document.getElementById('pPrice').value;
+    
+    if(!pName || !pPrice) {
+        alert("দয়া করে নাম এবং দাম লিখুন!");
+        return;
+    }
 
-            const name = document.getElementById('pName').value;
-            const category = document.getElementById('pCategory').value;
-            const price = document.getElementById('pPrice').value;
-            const stock = document.getElementById('pStock').value;
-            const discount = document.getElementById('pDiscount').value || 0;
-            const image = document.getElementById('pImage').value;
-            const description = document.getElementById('pDesc').value;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Saving...';
+    btn.disabled = true;
 
-            if(!name || !price) {
-                alert("Please fill name and price!");
-                btn.innerHTML = 'Save Product';
-                btn.disabled = false;
+    const productData = {
+        name: pName,
+        category: document.getElementById('pCategory').value,
+        price: parseFloat(pPrice),
+        stock_quantity: parseInt(document.getElementById('pStock').value) || 0,
+        discount: parseInt(document.getElementById('pDiscount').value) || 0,
+        image_url: document.getElementById('pImage').value,
+        description: document.getElementById('pDesc').value
+    };
+
+    try {
+        console.log("Sending data:", productData); // ব্রাউজার কনসোলে ডাটা চেক করার জন্য
+
+        // ২. Supabase-এ ডাটা পাঠানো
+        const { data, error } = await _supabase
+            .from('products')
+            .insert([productData])
+            .select(); // select() দিলে কনফার্ম হওয়া যায় ডাটা গেছে কি না
+
+        if (error) {
+            // যদি সুপাবেস থেকে কোনো এরর আসে (যেমন কলামের নাম ভুল)
+            throw error;
+        }
+
+        alert("সফলভাবে সেভ হয়েছে!");
+        
+        // ৩. ফর্ম রিসেট এবং রিফ্রেশ
+        document.getElementById('productForm').reset();
+        const modal = bootstrap.Modal.getInstance(document.getElementById('addProductModal'));
+        if(modal) modal.hide();
+        
+        if(typeof loadDashboard === "function") loadDashboard();
+        else location.reload();
+
+    } catch (err) {
+        console.error("Full Error Object:", err);
+        // স্ক্রিনে এরর মেসেজ দেখানো
+        alert("সেভ হয়নি! কারণ: " + (err.message || "Unknown error"));
+    } finally {
+        btn.innerHTML = 'Save Product';
+        btn.disabled = false;
+    }
+}
                 return;
             }
 
@@ -371,3 +412,4 @@
     </script>
 </body>
 </html>
+
