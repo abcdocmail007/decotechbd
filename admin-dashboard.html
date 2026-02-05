@@ -277,9 +277,12 @@
 
         async function refreshData() {
             const { data: products, error: pError } = await _supabase.from('products').select('*').order('id', { ascending: false });
-            const { data: orders, error: oError } = await _supabase.from('orders').select('*').order('created_at', { ascending: false });
+            const { data: orders, error: oError } = await _supabase.from('orders').select('*');
 
-            if (pError || oError) return;
+            if (pError || oError) {
+                console.error("Fetch Error:", pError || oError);
+                return;
+            }
 
             document.getElementById('totalProducts').innerText = products.length;
             document.getElementById('totalOrders').innerText = orders.length;
@@ -356,7 +359,6 @@
             const btn = document.getElementById('saveBtn');
             const id = document.getElementById('editProductId').value;
             
-            // ডাটাবেস কলামের নাম অনুযায়ী ম্যাপিং ঠিক করা হয়েছে
             const productData = {
                 name: document.getElementById('pName').value,
                 category: document.getElementById('pCategory').value,
