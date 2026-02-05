@@ -88,6 +88,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            gap: 10px;
         }
 
         .btn-login:hover {
@@ -114,7 +115,6 @@
         .spinner-border {
             width: 1.2rem;
             height: 1.2rem;
-            margin-right: 8px;
             display: none;
         }
     </style>
@@ -147,7 +147,7 @@
             </div>
 
             <button type="submit" id="loginBtn" class="btn-login">
-                <div class="spinner-border text-light" role="status" id="loginSpinner"></div>
+                <div class="spinner-border text-light spinner-border-sm" role="status" id="loginSpinner"></div>
                 <span id="btnText">Login to Dashboard</span>
             </button>
             
@@ -161,7 +161,15 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script>
+        // Supabase Initialization
+        const supabaseUrl = 'https://qxiofcydkujuxoiyvdlh.supabase.co';
+        // এখানে আপনার স্ক্রিনশটে থাকা 'anon public' কী-টি বসিয়ে দিন
+        const supabaseKey = 'আপনার_ANON_KEY_এখানে_বসান'; 
+        const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -172,15 +180,19 @@
             const btnText = document.getElementById('btnText');
             const spinner = document.getElementById('loginSpinner');
 
-            // লোডিং শুরু
+            // লোডিং এনিমেশন শুরু
             spinner.style.display = "block";
-            btnText.innerText = "Checking...";
+            btnText.innerText = "Authenticating...";
             loginBtn.disabled = true;
 
             setTimeout(() => {
-                // আপনার দেওয়া ইমেইল এবং পাসওয়ার্ড চেক
+                // আপনার দেওয়া সঠিক ইমেইল এবং পাসওয়ার্ড চেক
                 if(email === "admin@decotech.com" && password === "Elias14296") {
-                    // সফল হলে ড্যাশবোর্ডে পাঠাবে
+                    
+                    // সেশনে লগইন স্ট্যাটাস সেভ করা (Security-র জন্য)
+                    localStorage.setItem('isLoggedIn', 'true');
+                    
+                    // সফল হলে সরাসরি ড্যাশবোর্ড ফাইলে যাবে
                     window.location.href = "admin-dashboard.html"; 
                 } else {
                     // ভুল হলে এরর মেসেজ দেখাবে
