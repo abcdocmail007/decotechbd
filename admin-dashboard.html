@@ -301,8 +301,11 @@
             tableBody.innerHTML = '';
 
             orders.forEach(order => {
-                totalSales += order.total_amount;
-                let s = order.status.toLowerCase();
+                // আপনার ডাটাবেজে price বা amount এর কলামের নাম অনুযায়ী চেক করুন
+                let amount = order.total_price || order.total_amount || 0;
+                totalSales += amount;
+                
+                let s = (order.order_status || order.status || 'pending').toLowerCase();
                 if(statusCount.hasOwnProperty(s)) statusCount[s]++;
                 customers.add(order.customer_name);
 
@@ -311,8 +314,8 @@
                         <td class="fw-semibold">#DT-${order.id.toString().slice(-4)}</td>
                         <td>${order.customer_name}</td>
                         <td>${order.product_name || 'Item'}</td>
-                        <td class="fw-bold">€${order.total_amount.toFixed(2)}</td>
-                        <td><span class="status-pill ${s}">${order.status}</span></td>
+                        <td class="fw-bold">€${amount.toFixed(2)}</td>
+                        <td><span class="status-pill ${s}">${s}</span></td>
                         <td><button class="btn btn-sm btn-light border"><i class="fa fa-eye"></i></button></td>
                     </tr>
                 `;
@@ -340,12 +343,13 @@
             btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Saving...';
             btn.disabled = true;
 
+            // আপনার Schema Visualizer-এর হুবহু কলামের নাম এখানে দেওয়া হয়েছে
             const productData = {
                 name: pName,
                 category: document.getElementById('pCategory').value,
-                price: parseFloat(pPrice),
-                stock_quantity: parseInt(document.getElementById('pStock').value) || 0,
-                discount: parseInt(document.getElementById('pDiscount').value) || 0,
+                price: parseInt(pPrice),
+                Stock_Quantity: parseInt(document.getElementById('pStock').value) || 0,
+                Discount: parseInt(document.getElementById('pDiscount').value) || 0,
                 image_url: document.getElementById('pImage').value,
                 description: document.getElementById('pDesc').value
             };
@@ -357,10 +361,15 @@
 
                 alert("Product saved successfully!");
                 document.getElementById('productForm').reset();
-                bootstrap.Modal.getInstance(document.getElementById('addProductModal')).hide();
+                
+                const modalEl = document.getElementById('addProductModal');
+                const modal = bootstrap.Modal.getInstance(modalEl);
+                if(modal) modal.hide();
+                
                 refreshData();
 
             } catch (err) {
+                console.error("Save Error:", err);
                 alert("Failed to save: " + err.message);
             } finally {
                 btn.innerHTML = 'Save Product';
