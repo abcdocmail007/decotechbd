@@ -6,7 +6,7 @@
     <title>DecoTech | Premium Smart Store</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -17,177 +17,177 @@
             --sky-blue: #00b4d8;
             --deep-red: #d62828;
             --dark-navy: #011627;
-            --light-bg: #f8f9fa;
         }
 
-        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; background-color: #fff; color: #333; }
+        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; background-color: #fcfcfc; }
 
-        /* Top Bar & Navbar (Keeping your original layout) */
+        /* Top Bar */
         .top-bar { padding: 15px 0; border-bottom: 1px solid #f1f1f1; background: #fff; }
         .search-group { display: flex; max-width: 450px; width: 100%; position: relative; }
-        .search-input { border: 1px solid #eee; padding: 10px 20px; width: 100%; border-radius: 8px 0 0 8px; outline: none; background: #f9f9f9; }
-        .search-btn { background: var(--primary-orange); border: none; color: white; padding: 0 20px; border-radius: 0 8px 8px 0; transition: 0.3s; }
-        .contact-info { font-size: 12px; }
+        .search-input { border: 1px solid #ddd; padding: 10px 20px; width: 100%; border-radius: 4px 0 0 4px; outline: none; }
+        .search-btn { background: var(--primary-orange); border: none; color: white; padding: 0 20px; border-radius: 0 4px 4px 0; transition: 0.3s; }
+        .search-btn:hover { background: var(--deep-red); }
+        .contact-info { font-size: 12px; color: #333; }
         .contact-info i { color: var(--deep-red); font-size: 16px; margin-right: 8px; }
 
+        /* Navbar */
         .navbar { background: #fff; padding: 15px 0; }
-        .nav-link { color: #000 !important; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; padding: 5px 15px !important; cursor: pointer; }
+        .nav-link { 
+            color: #000 !important; font-weight: 700; font-size: 11px; 
+            text-transform: uppercase; letter-spacing: 1px; padding: 5px 15px !important; transition: 0.3s;
+        }
         .nav-link:hover { color: var(--deep-red) !important; }
 
-        /* Hero Carousel (Your Original Styles) */
-        .carousel-item { min-height: 550px; padding: 80px 0; border-bottom-left-radius: 150px; position: relative; overflow: hidden; }
+        /* Hero Carousel */
+        .carousel-item {
+            min-height: 550px;
+            padding: 80px 0;
+            border-bottom-left-radius: 150px;
+            position: relative;
+            overflow: hidden;
+        }
         .slide-1 { background-image: url(img/clothing.png); background-position: center; background-size: cover; }
         .slide-2 { background-image: url(img/decorhome.png); background-position: center; background-size: cover; }
         .slide-3 { background-image: url(img/smart-gadget.png); background-position: center; background-size: cover; }
+
         .carousel-content h1 { font-size: 55px; font-weight: 800; color: #00B4D8; line-height: 1.1; margin-bottom: 20px; }
-        .carousel-content p { color: #D62828; font-size: 20px; margin-bottom: 30px; }
-        .view-all-btn { background: #FA8201; color: white; border: none; padding: 12px 35px; font-weight: bold; border-radius: 5px; transition: 0.4s; }
+        .carousel-content p { color: #D62828; font-size: 20px; margin-bottom: 30px; opacity: 0.9; }
+        .view-all-btn { 
+            background: #FA8201; color: white; border: none; padding: 12px 35px; 
+            font-weight: bold; border-radius: 5px; transition: 0.4s;
+        }
+        .view-all-btn:hover { background: #D62828; color: #fff; transform: translateY(-3px); }
 
         /* Section Title */
-        .section-title { font-family: 'Courier New', Courier, monospace; color: var(--deep-red); font-size: 50px; font-weight: 900; margin: 40px 0; opacity: 0.8; }
+        .section-title { font-family: 'Courier New', Courier, monospace; color: var(--deep-red); font-size: 60px; font-weight: 900; margin: 20px 0 50px; opacity: 0.8; }
 
-        /* =========================================
-           SMART & MODERN PRODUCT CARD DESIGN
-        ============================================ */
-        .product-card {
-            background: #fff;
-            border-radius: 20px;
-            padding: 12px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid #f0f0f0;
+        /* --- Updated Modern Product Card --- */
+        .product-card { 
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+            border: none; 
+            background: #fff; 
+            border-radius: 15px; 
+            padding: 10px;
             position: relative;
-            height: 100%;
+        }
+        
+        .img-container { 
+            background: #f8f9fa; 
+            border-radius: 12px; 
+            padding: 20px; 
+            position: relative; 
+            overflow: hidden; 
+            transition: 0.4s; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            height: 240px;
+        }
+        
+        .img-container img { 
+            max-height: 100%; 
+            object-fit: contain; 
+            transition: transform 0.6s ease; /* For Zoom Effect */
+        }
+        
+        .product-card:hover .img-container img { 
+            transform: scale(1.1); 
         }
 
-        /* Image Container & Zoom Effect */
-        .img-container {
-            background: var(--light-bg);
-            border-radius: 15px;
-            height: 260px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            transition: 0.4s;
-        }
-
-        .img-container img {
-            max-height: 80%;
-            width: auto;
-            transition: all 0.6s ease;
-        }
-
-        /* Hover Zoom & Background Shift */
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            border-color: transparent;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
         }
 
-        .product-card:hover .img-container img {
-            transform: scale(1.15) rotate(2deg);
-        }
-
-        /* Floating Action Buttons */
-        .product-actions {
-            position: absolute;
-            bottom: -50px; /* Hidden initially */
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            transition: 0.4s all ease-in-out;
-            z-index: 10;
-        }
-
-        .product-card:hover .product-actions {
-            bottom: 20px; /* Slides up on hover */
-        }
-
-        .action-btn {
-            width: 40px;
-            height: 40px;
-            background: #fff;
-            color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: 0.3s;
-            text-decoration: none;
-        }
-
-        .action-btn:hover {
-            background: var(--primary-orange);
-            color: #fff;
-            transform: scale(1.1);
-        }
-
-        /* Sale Badge */
-        .badge-sale {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background: rgba(214, 40, 40, 0.9);
-            color: #fff;
-            font-size: 10px;
-            font-weight: 700;
-            padding: 5px 12px;
-            border-radius: 50px;
-            backdrop-filter: blur(5px);
+        .badge-sale { 
+            position: absolute; 
+            top: 12px; 
+            left: 12px; 
+            background: var(--deep-red); 
+            color: white; 
+            font-size: 11px; 
+            padding: 4px 10px; 
+            border-radius: 50px; 
+            font-weight: 600; 
             z-index: 2;
+            box-shadow: 0 4px 8px rgba(214, 40, 40, 0.3);
+        }
+        
+        .product-actions { 
+            position: absolute; 
+            bottom: -50px; /* Hidden initially */
+            left: 50%; 
+            transform: translateX(-50%);
+            display: flex; 
+            gap: 10px; 
+            transition: all 0.4s ease; 
+            z-index: 5;
+        }
+        
+        .product-card:hover .product-actions { 
+            bottom: 20px; /* Slide up on hover */
         }
 
-        /* Info Section */
-        .product-info {
-            padding: 15px 5px 5px;
-            text-align: left;
+        .p-action-icon { 
+            background: white; 
+            width: 38px; 
+            height: 38px; 
+            border-radius: 10px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 15px; 
+            color: var(--dark-navy); 
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1); 
+            cursor: pointer; 
+            transition: 0.3s; 
+        }
+        
+        .p-action-icon:hover { 
+            background: var(--primary-orange); 
+            color: white; 
+            transform: translateY(-3px);
         }
 
-        .product-info h6 {
-            font-size: 15px;
+        .product-info { padding: 15px 5px 10px; text-align: left; }
+        .product-info h6 { 
+            font-size: 14px; 
             font-weight: 600;
-            color: #222;
-            margin-bottom: 8px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            color: #333; 
+            margin-bottom: 8px; 
+            white-space: nowrap; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
         }
+        
+        .price-tag { display: flex; align-items: center; gap: 8px; }
+        .price { color: var(--sky-blue); font-weight: 800; font-size: 17px; }
+        .rating { color: #ffb703; font-size: 10px; margin-top: 2px; }
 
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        /* Testimonials */
+        .testi-heading { font-weight: 800; font-size: 32px; margin-bottom: 50px; color: #222; }
+        .testi-card { border: 1px solid #eee; padding: 40px; border-radius: 10px; height: 100%; transition: 0.3s; background: #fff; }
+        .testi-card:hover { border-color: var(--primary-orange); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
 
-        .price {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--sky-blue);
-        }
-
-        .rating {
-            font-size: 10px;
-            color: #ffb703;
-        }
-
-        /* Footer & Others (Your Original Styles) */
+        /* Footer */
         footer { background: var(--dark-navy); color: #fff; padding: 80px 0 20px; }
+        .footer-logo { font-size: 30px; font-weight: 800; margin-bottom: 25px; }
         .footer-logo span { color: var(--sky-blue); }
-        .footer-link { display: block; color: #adb5bd; text-decoration: none; font-size: 13px; margin-bottom: 12px; }
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 999; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .footer-link { display: block; color: #adb5bd; text-decoration: none; font-size: 13px; margin-bottom: 12px; transition: 0.3s; }
+        .newsletter-container { background: rgba(255,255,255,0.03); padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); }
+        .news-input { background: rgba(255,255,255,0.1); border: none; padding: 12px 15px; border-radius: 4px; color: white; width: 100%; margin-bottom: 15px; font-size: 13px; outline: none;}
+        .news-btn { background: var(--sky-blue); border:none; color:white; padding: 10px; width:100%; border-radius:4px; font-weight:600;}
+        .social-links a { width: 35px; height: 35px; background: rgba(255,255,255,0.1); color: #fff; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; margin-right: 10px; transition: 0.3s; text-decoration: none; }
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 999; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: 0.3s; text-decoration: none; }
     </style>
 </head>
 <body>
 
     <div class="top-bar">
         <div class="container d-flex justify-content-between align-items-center">
-            <h2 class="fw-bold m-0" style="color:#222; cursor: pointer;" onclick="fetchProducts('all')">Deco<span style="color:var(--deep-red)">Tech</span></h2>
+            <h2 class="fw-bold m-0" style="color:#222">Deco<span style="color:var(--deep-red)">Tech</span></h2>
             <div class="search-group d-none d-lg-flex">
-                <input type="text" class="search-input" id="searchBox" placeholder="Search premium items..." onkeyup="searchProducts()">
+                <input type="text" class="search-input" placeholder="Search our store">
                 <button class="search-btn"><i class="fa fa-search"></i></button>
             </div>
             <div class="d-flex gap-4">
@@ -203,73 +203,165 @@
 
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" onclick="fetchProducts('all')">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" onclick="fetchProducts('all')">Shop</a></li>
-                    <li class="nav-item"><a class="nav-link" onclick="fetchProducts('Decor')">Decor</a></li>
-                    <li class="nav-item"><a class="nav-link" onclick="fetchProducts('Gadgets')">Gadgets</a></li>
-                    <li class="nav-item"><a class="nav-link" onclick="fetchProducts('Clothing')">Clothing</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="decor.html">Decor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gadgets.html">Gadgets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="clothing.html">Clothing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="d-flex gap-4 fs-5 align-items-center">
-                <i class="fa-regular fa-user"></i>
-                <i class="fa-regular fa-heart"></i>
-                <i class="fa-solid fa-shopping-bag"></i>
+                <i class="fa-regular fa-user cursor-pointer"></i>
+                <i class="fa-regular fa-heart cursor-pointer"></i>
+                <i class="fa-solid fa-shopping-bag cursor-pointer"></i>
             </div>
         </div>
     </nav>
 
     <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
         <div class="carousel-inner">
             <div class="carousel-item active slide-1">
-                <div class="container"><div class="carousel-content" data-aos="fade-right"><h1>Modern Tech <br> Smart Decor</h1><p>New Arrival - Up to 40% Off</p><button class="view-all-btn">VIEW ALL</button></div></div>
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 carousel-content" data-aos="fade-right">
+                            <h1>Modern Tech <br> Smart Decor</h1>
+                            <p>New Arrival - Up to 40% Off</p>
+                            <button class="view-all-btn">VIEW ALL <i class="fa fa-arrow-right ms-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item slide-2">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 carousel-content">
+                            <h1>Premium Sound <br> Experience</h1>
+                            <p>Pure Audio - Starting from $99</p>
+                            <button class="view-all-btn">SHOP NOW <i class="fa fa-arrow-right ms-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item slide-3">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 carousel-content">
+                            <h1>AI Powered <br> Home Assistant</h1>
+                            <p>Control Your Home with One Touch</p>
+                            <button class="view-all-btn">EXPLORE <i class="fa fa-arrow-right ms-2"></i></button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
     </div>
 
     <section class="container text-center py-5">
-        <h2 class="section-title" id="pageTitle" data-aos="fade-up">All Product</h2>
+        <h2 class="section-title" data-aos="fade-up">All Product</h2>
         <div id="product-container" class="row g-4 mt-2">
+             </div>
+    </section>
+
+    <section class="py-5" style="background:#fff">
+        <div class="container text-center">
+            <h2 class="testi-heading" data-aos="fade-up">Our customer say</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-5" data-aos="fade-right">
+                    <div class="testi-card">
+                        <i class="fa fa-quote-left"></i>
+                        <p>"I love this theme. Highly customizable, easy to use and very flexible theme. Thank you!"</p>
+                        <h6>By disarak</h6>
+                        <div class="rating mt-2">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5" data-aos="fade-left">
+                    <div class="testi-card">
+                        <i class="fa fa-quote-left"></i>
+                        <p>"The design is really good and site is very responsive. Thank you from the developer!"</p>
+                        <h6>By cremica_foods</h6>
+                        <div class="rating mt-2">
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
     </section>
 
     <footer>
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-4">
-                    <div class="footer-logo fw-bold fs-3">Deco<span>Tech</span></div>
-                    <p class="mt-3 text-secondary">Premium smart gadgets and home decor.</p>
+                    <div class="footer-logo">Deco<span>Tech</span></div>
+                    <p class="footer-link" style="padding-right: 40px; color:#adb5bd; line-height:1.8">Your destination for premium smart gadgets and home decor. We combine quality with modern aesthetics.</p>
+                    <div class="social-links mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
-                <div class="col-lg-2">
-                    <h6 class="fw-bold mb-4">Quick Menu</h6>
+                <div class="col-6 col-lg-2">
+                    <h5 class="footer-head">Quick Menu</h5>
                     <a href="#" class="footer-link">Home</a>
                     <a href="#" class="footer-link">Shop</a>
+                    <a href="#" class="footer-link">Decor</a>
+                    <a href="#" class="footer-link">Gadgets</a>
+                    <a href="#" class="footer-link">Clothing</a>
                 </div>
-                <div class="col-lg-2">
-                    <h6 class="fw-bold mb-4">Support</h6>
-                    <a href="login.html" class="footer-link" target="_blank">Admin Login</a>
+                <div class="col-6 col-lg-2">
+                    <h5 class="footer-head">Support</h5>
+                    <a href="#" class="footer-link">Contact Us</a>
+                    <a href="#" class="footer-link">About Elias</a>
                     <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Shipping Info</a>
+                    <a href="login.html" target="_blank" class="footer-link">Admin Login</a>
                 </div>
                 <div class="col-lg-4">
-                    <h6 class="fw-bold mb-4">Newsletter</h6>
-                    <input type="text" class="search-input w-100 mb-2" placeholder="Email Address">
-                    <button class="view-all-btn w-100">SUBSCRIBE</button>
+                    <h5 class="footer-head">Newsletter</h5>
+                    <p class="footer-link mb-4" style="color:#adb5bd">Subscribe to get special offers and once-in-a-lifetime deals.</p>
+                    <div class="newsletter-container">
+                        <input type="email" class="news-input" placeholder="Your Email Address">
+                        <button class="news-btn">SUBSCRIBE NOW</button>
+                    </div>
                 </div>
             </div>
-            <div class="row mt-5 pt-4 border-top border-secondary opacity-50 small">
-                <div class="col-md-6">© 2026 DecoTech Store. All Rights Reserved.</div>
-                <div class="col-md-6 text-end">03/02/2026 | Rajshahi, BD</div>
+            <div class="row mt-5 pt-4 border-top border-secondary">
+                <div class="col-md-6 text-center text-md-start small text-secondary">
+                    © 2026 DecoTech Store. All Rights Reserved.
+                </div>
+                <div class="col-md-6 text-center text-md-end small text-secondary">
+                    03/02/2026 | Rajshahi, BD
+                </div>
             </div>
         </div>
     </footer>
 
-    <a href="#" class="wa-float"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/yournumber" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <script>
         AOS.init({ duration: 1000, once: true });
 
@@ -277,52 +369,51 @@
         const supabaseKey = 'sb_publishable_QOjefQ_1QCL6BGNkmAHn5w_bZBoLH-R';
         const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
 
-        let cachedItems = [];
-
-        async function fetchProducts(cat = 'all') {
-            document.getElementById('pageTitle').innerText = cat === 'all' ? "All Product" : cat;
-            const { data, error } = await _supabase.from('products').select('*').order('id', { ascending: false });
-            if (error) return;
-            
-            cachedItems = data;
-            const filtered = cat === 'all' ? data : data.filter(p => p.category === cat);
-            render(filtered);
-        }
-
-        function render(data) {
+        async function fetchProducts() {
             const container = document.getElementById('product-container');
-            container.innerHTML = data.map((p, i) => `
-                <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="${i * 50}">
-                    <div class="product-card">
-                        <div class="img-container">
-                            ${p.Discount > 0 ? `<span class="badge-sale">${p.Discount}% OFF</span>` : ''}
-                            <img src="${p.image_url || 'https://via.placeholder.com/200'}" alt="${p.name}">
-                            <div class="product-actions">
-                                <div class="action-btn"><i class="fa-regular fa-heart"></i></div>
-                                <div class="action-btn"><i class="fa-solid fa-cart-shopping"></i></div>
-                                <div class="action-btn"><i class="fa-regular fa-eye"></i></div>
+            
+            const { data: products, error } = await _supabase
+                .from('products')
+                .select('*')
+                .order('id', { ascending: false });
+
+            if (error) {
+                console.error("Error loading products:", error);
+                return;
+            }
+
+            container.innerHTML = ''; 
+
+            products.forEach((product, index) => {
+                container.innerHTML += `
+                    <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="${index * 50}">
+                        <div class="product-card">
+                            <div class="img-container">
+                                ${product.Discount > 0 ? `<span class="badge-sale">${product.Discount}% OFF</span>` : ''}
+                                <img src="${product.image_url || 'https://via.placeholder.com/150'}" class="img-fluid" alt="${product.name}">
+                                <div class="product-actions">
+                                    <div class="p-action-icon" title="Wishlist"><i class="fa-regular fa-heart"></i></div>
+                                    <div class="p-action-icon" title="Add to Cart"><i class="fa-solid fa-cart-shopping"></i></div>
+                                    <div class="p-action-icon" title="Quick View"><i class="fa-regular fa-eye"></i></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="product-info">
-                            <h6>${p.name}</h6>
-                            <div class="price-row">
-                                <div class="price">€${p.price}</div>
-                                <div class="rating">
-                                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa-half-alt fa"></i>
+                            <div class="product-info">
+                                <h6 title="${product.name}">${product.name}</h6>
+                                <div class="price-tag">
+                                    <div class="price">€${product.price}</div>
+                                    <div class="rating">
+                                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            `).join('');
+                `;
+            });
         }
 
-        function searchProducts() {
-            const t = document.getElementById('searchBox').value.toLowerCase();
-            render(cachedItems.filter(p => p.name.toLowerCase().includes(t)));
-        }
-
-        window.onload = () => fetchProducts('all');
+        window.onload = fetchProducts;
     </script>
 </body>
 </html>
+
